@@ -1,0 +1,29 @@
+apply plugin: 'checkstyle'
+
+def isTravis = "true".equals(System.getenv("TRAVIS"))
+
+checkstyle {
+  toolVersion = "7.1.1"
+  showViolations isTravis
+}
+
+android.lintOptions {
+  abortOnError true
+  lintConfig file("${project.rootDir}/config/lint/lint.xml")
+  textReport isTravis
+  textOutput 'stdout'
+}
+
+task checkstyle(type: Checkstyle) {
+  description 'Run checkstyle'
+  group 'verification'
+
+  configFile file("${project.rootDir}/config/checkstyle/checkstyle.xml")
+  configProperties = [rootDir: "${project.rootDir}"]
+  source 'src'
+  include '**/*.java'
+  exclude '**/gen/**'
+  classpath = files()
+}
+
+check.dependsOn 'checkstyle', 'lint'
