@@ -10,7 +10,7 @@ This helps debug your tagging implementation.
 
 Overlay | Detailed
 --- | ---
-<img width="280" src="art/screenshot-detailed.png" /> | <img width="280" src="art/screenshot-overlay.png" />
+<img width="280" src="" /> | <img width="280" src="" />
 
 
 # Download
