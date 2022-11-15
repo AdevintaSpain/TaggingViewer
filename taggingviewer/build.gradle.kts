@@ -3,6 +3,12 @@ plugins {
   kotlin("android")
 }
 
+//apply(from = "../config/android-quality.gradle")
+
+ext["PUBLISH_ARTIFACT_ID"] = "tagging-viewer"
+
+apply(from = "${rootProject.projectDir}/scripts/publish-module.gradle")
+
 android {
   compileSdk = 33
 
