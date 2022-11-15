@@ -7,7 +7,7 @@ This simple library lets you visualize live on-screen all the tagging that is oc
 This helps debug your tagging implementation.
 
 # Download
-It's available on Schibsted Artifactory:
+
 ```groovy
 dependencies {
   debugImplementation 'com.adevinta.android:taggingviewer:+'
