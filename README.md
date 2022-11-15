@@ -1,17 +1,10 @@
 # Tagging Viewer
 
-<!-- Badger start badges -->
-[![Build status](https://badger.engprod-pro.mpi-internal.com/badge/travis/scmspain/android-common--lib-tagging-viewer)](https://badger.engprod-pro.mpi-internal.com/redirect/travis/scmspain/android-common--lib-tagging-viewer) [![Test coverage](https://badger.engprod-pro.mpi-internal.com/badge/coverage/scmspain/android-common--lib-tagging-viewer)](https://badger.engprod-pro.mpi-internal.com/redirect/coverage/scmspain/android-common--lib-tagging-viewer) [![Static Code Analysis issues](https://badger.engprod-pro.mpi-internal.com/badge/issues/scmspain/android-common--lib-tagging-viewer)](https://badger.engprod-pro.mpi-internal.com/redirect/issues/scmspain/android-common--lib-tagging-viewer) [![Quality Index](https://badger.engprod-pro.mpi-internal.com/badge/quality_index/scmspain/android-common--lib-tagging-viewer)](https://badger.engprod-pro.mpi-internal.com/redirect/quality_index/scmspain/android-common--lib-tagging-viewer) [![Badger](https://badger.engprod-pro.mpi-internal.com/badge/engprod/scmspain/android-common--lib-tagging-viewer)](https://badger.engprod-pro.mpi-internal.com/redirect/engprod/scmspain/android-common--lib-tagging-viewer)
-<!-- Badger end badges -->
+[![Hex.pm](https://img.shields.io/hexpm/l/plug.svg)](LICENSE.md)
 
 This simple library lets you visualize live on-screen all the tagging that is occurring in your application.
 
 This helps debug your tagging implementation.
-
-Overlay | Detailed
---- | ---
-<img width="280" src="" /> | <img width="280" src="" />
-
 
 # Download
 It's available on Schibsted Artifactory:
