@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="tgv_item_tracking_name_text_size">15sp</dimen>
+  <dimen name="tgv_item_separator_tracking_height">1dp</dimen>
+</resources>

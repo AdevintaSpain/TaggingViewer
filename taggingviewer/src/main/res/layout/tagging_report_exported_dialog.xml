@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="16dp"
+              tools:ignore="HardcodedText"
+    >
+
+  <TextView
+      style="@style/TextAppearance.MaterialComponents.Headline5"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Report exported! \\o/"
+      />
+
+  <TextView
+      android:id="@+id/tagging_report_exported_name"
+      style="@style/TextAppearance.MaterialComponents.Caption"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:maxLines="1"
+      tools:text="Test report name blablablabla"
+      />
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/tagging_report_exported_url"
+      style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:hint="Url"
+      app:endIconDrawable="@drawable/tgv_ic_content_copy_black_24dp"
+      app:endIconMode="custom"
+      >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:editable="false"
+        android:ellipsize="end"
+        android:lines="1"
+        android:maxLines="1"
+        android:singleLine="true"
+        tools:text="http://localhost:8080/api/report/rSckE1nKnH6B2NqPtLEi"
+        />
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:orientation="horizontal"
+      >
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tagging_report_exported_open_browser"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Open"
+        app:icon="@drawable/tgv_ic_open_in_browser_black_24dp"
+        />
+    <Space
+        android:layout_width="8dp"
+        android:layout_height="0dp"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tagging_report_exported_share"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Share"
+        app:icon="@drawable/tgv_ic_share_black_24dp"
+        />
+  </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,18 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.adevinta.android.taggingviewer"
+    >
+
+  <application>
+    <activity
+        android:name="com.adevinta.android.taggingviewer.DetailedTaggingActivity"
+        android:theme="@style/Theme.MaterialComponents.Light"
+        />
+    <provider
+        android:authorities="${applicationId}.taggingviewerinitprovider"
+        android:exported="false"
+        android:enabled="true"
+        android:name="com.adevinta.android.taggingviewer.internal.TaggingViewerInitProvider"
+        />
+  </application>
+
+</manifest>

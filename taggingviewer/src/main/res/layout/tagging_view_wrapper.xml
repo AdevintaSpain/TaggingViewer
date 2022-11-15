@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/tagging_viewer_wrapper"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+    >
+
+  <FrameLayout
+      android:id="@+id/tagging_viewer_activity_container"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      />
+
+  <com.adevinta.android.taggingviewer.internal.view.IgnoreTouchLayout
+      android:id="@+id/tagging_viewer_list_container"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom|end"
+      android:gravity="bottom|end"
+      style="@style/tgv_view"
+      >
+
+    <com.adevinta.android.taggingviewer.internal.view.TaggingOverlayListView
+        android:id="@+id/tagging_viewer_tags_list"
+        android:layout_width="match_parent"
+        android:layout_gravity="end"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        />
+  </com.adevinta.android.taggingviewer.internal.view.IgnoreTouchLayout>
+</FrameLayout>

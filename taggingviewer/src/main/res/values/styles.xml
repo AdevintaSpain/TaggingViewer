@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="Theme.TaggingViewer"
+         parent="Theme.AppCompat"></style>
+
+  <style name="tgv_item_tracking_name">
+    <item name="android:shadowColor">@color/tgv_item_tracking_shadow_color</item>
+    <item name="android:textSize">@dimen/tgv_item_tracking_name_text_size</item>
+    <item name="android:textColor">@color/tgv_item_tracking_name_text_color</item>
+    <item name="android:gravity">end</item>
+    <item name="android:shadowRadius"
+          type="dimen"
+          format="float">1.5
+    </item>
+  </style>
+
+  <style name="tgv_item_tracking_indicator">
+    <item name="android:background">@color/tgv_item_tracking_indicator_background_color</item>
+  </style>
+
+  <style name="tgv_view">
+    <item name="android:background">@color/tgv_view_background_color</item>
+  </style>
+</resources>

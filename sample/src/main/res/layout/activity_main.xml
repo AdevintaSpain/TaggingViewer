@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="16dp"
+              tools:context="com.adevinta.android.taggingviewer.sample.MainSampleActivity"
+              tools:ignore="HardcodedText,ButtonStyle"
+    >
+
+  <TextView
+      style="@style/TextAppearance.AppCompat.Title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Library Options"
+      />
+
+  <androidx.appcompat.widget.SwitchCompat
+      android:id="@+id/overlayEnabledSwitch"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:checked="false"
+      android:switchPadding="8dp"
+      android:text="Overlay enabled"
+      />
+
+  <androidx.appcompat.widget.SwitchCompat
+      android:id="@+id/namedSeparatorEnabledSwitch"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:checked="false"
+      android:switchPadding="8dp"
+      android:text="Named separator enabled"
+      />
+
+  <Button
+      android:id="@+id/show_detailed_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Detailed activity"
+      />
+  <Button
+      android:id="@+id/clearAllButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Clear all events"
+      />
+
+  <Space
+      android:layout_width="0dp"
+      android:layout_height="16dp"
+      />
+
+  <TextView
+      style="@style/TextAppearance.AppCompat.Title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Opacity"
+      />
+
+  <SeekBar
+      android:id="@+id/opacitySeekBar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:progress="50"
+      android:max="100"
+      />
+
+  <Space
+      android:layout_width="0dp"
+      android:layout_height="16dp"
+      />
+
+  <TextView
+      style="@style/TextAppearance.AppCompat.Title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Add tags"
+      />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
+    <Button
+        android:id="@+id/addScreenButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Screen"
+        />
+    <Button
+        android:id="@+id/addClickButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Click"
+        />
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
+    <Button
+        android:id="@+id/addEventButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Event"
+        />
+    <Button
+        android:id="@+id/addIdentifyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Identify"
+        />
+  </LinearLayout>
+
+  <Button
+      android:id="@+id/addRandomTagsButton"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Add random events"
+      />
+
+  <Space
+      android:layout_width="0dp"
+      android:layout_height="16dp"
+      />
+
+  <TextView
+      style="@style/TextAppearance.AppCompat.Title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Demos"
+      />
+
+  <Button
+      android:id="@+id/show_the_merge_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Open merge tag"
+      />
+
+  <Button
+      android:id="@+id/show_the_list_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Open list"
+      />
+
+
+</LinearLayout>

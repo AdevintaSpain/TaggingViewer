@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="tgv_item_tracking_shadow_color">#fff</color>
+  <color name="tgv_item_tracking_name_background_color">#C4FFFFFF</color>
+  <color name="tgv_item_tracking_name_text_color">#000</color>
+  <color name="tgv_item_tracking_indicator_background_color">#89ffffff</color>
+  <color name="tgv_item_separator_tracking_name_background_color">#89000000</color>
+  <color name="tgv_view_background_color">#00000000</color>
+  <color name="tgv_item_tracking_event_indicator_color">#FFA000</color>
+  <color name="tgv_item_tracking_screen_indicator_color">#303F9F</color>
+  <color name="tgv_item_tracking_click_indicator_color">#388E3C</color>
+  <color name="tgv_item_tracking_user_attribute_indicator_color">#D32F2F</color>
+  <color name="tgv_detail_background">#F1F1F1</color>
+  <color name="tgv_detail_timeline_line">#B1B1B1</color>
+</resources>

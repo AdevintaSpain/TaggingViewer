@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"
+              android:orientation="vertical"
+              android:padding="5dp"
+    >
+
+  <LinearLayout
+      android:layout_height="wrap_content"
+      android:layout_width="match_parent"
+      android:orientation="horizontal"
+      >
+
+    <TextView
+        android:id="@+id/tagTypeView"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="16sp"
+        tools:text="◀"
+        tools:textColor="@color/tgv_item_tracking_screen_indicator_color"
+        />
+
+    <TextView
+        android:id="@+id/tagTitleView"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_width="match_parent"
+        android:textColor="@color/tgv_item_tracking_name_text_color"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:ignore="RtlHardcoded"
+        tools:text="TagTitle"
+        />
+
+  </LinearLayout>
+
+
+  <TextView
+      android:id="@+id/detailsTextView"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="3dp"
+      android:layout_width="match_parent"
+      android:textColor="@color/tgv_item_tracking_name_text_color"
+      tools:text="Key1 -> Value1\nKey2 -> Value2\nKey3 -> Value3"
+      />
+
+</LinearLayout>
