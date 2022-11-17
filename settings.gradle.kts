@@ -1,5 +1,4 @@
 enableFeaturePreview("VERSION_CATALOGS")
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
   repositories {
@@ -8,7 +7,7 @@ pluginManagement {
   }
 }
 
-include("sample")
+include(":sample")
 
-include("taggingviewer")
-include("taggingviewer-no-op")
+include(":taggingviewer")
+include(":taggingviewer-no-op")

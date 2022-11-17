@@ -27,8 +27,5 @@ dependencies {
   implementation(libs.androidx.recyclerView)
   implementation(libs.androidx.lifecycle)
   implementation(libs.androidx.material)
-
-  implementation(libs.network.okhttp)
-  implementation(libs.network.gson)
 }
 

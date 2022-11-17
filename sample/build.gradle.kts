@@ -26,8 +26,8 @@ android {
 }
 
 dependencies {
-  debugImplementation(projects.taggingviewer)
-  releaseImplementation(projects.taggingviewerNoOp)
+  debugImplementation(project(":taggingviewer"))
+  releaseImplementation(project(":taggingviewer-no-op"))
 
   implementation(libs.androidx.appcompat)
   implementation(libs.androidx.recyclerView)

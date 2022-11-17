@@ -9,8 +9,6 @@ androidx-appcompat = "1.5.0"
 androidx-recycler = "1.2.1"
 androidx-livedata = "2.5.1"
 material = "1.7.0"
-okhttp = "4.10.0"
-gson = "2.10"
 
 [libraries]
 
@@ -24,5 +22,3 @@ androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "a
 androidx-recyclerView = { module = "androidx.recyclerview:recyclerview", version.ref = "androidx-recycler" }
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-livedata", version.ref = "androidx-livedata" }
 androidx-material = { module = "com.google.android.material:material", version.ref = "material" }
-network-okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
-network-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
