@@ -43,12 +43,12 @@ afterEvaluate {
 
                 pom {
                     name = project.project.getName()
-                    description = 'Barista makes developing UI test faster, easier and more predictable. Built on top of Espresso, it provides a simple and discoverable API, removing most of the boilerplate and verbosity of common Espresso tasks. You and your Android team will write tests with no effort.'
-                    url = 'https://github.com/AdevintaSpain/Barista'
+                    description = 'TaggingViewer helps developer to debug their app trackings. Display an overlay with all the tagging provided by your app.'
+                    url = 'https://github.com/AdevintaSpain/TaggingViewer'
                     licenses {
                         license {
                             name = 'Stream License'
-                            url = 'https://github.com/AdevintaSpain/Barista/blob/master/LICENSE.md'
+                            url = 'https://github.com/AdevintaSpain/TaggingViewer/blob/master/LICENSE.md'
                         }
                     }
                     developers {
@@ -63,9 +63,9 @@ afterEvaluate {
                         url = "https://github.com/AdevintaSpain"
                     }
                     scm {
-                        connection = 'scm:git:github.com/AdevintaSpain/Barista.git'
-                        developerConnection = 'scm:git:ssh://github.com/AdevintaSpain/Barista.git'
-                        url = 'https://github.com/AdevintaSpain/Barista/tree/master'
+                        connection = 'scm:git:github.com/AdevintaSpain/TaggingViewer.git'
+                        developerConnection = 'scm:git:ssh://github.com/AdevintaSpain/TaggingViewer.git'
+                        url = 'https://github.com/AdevintaSpain/TaggingViewer/tree/main'
                     }
                 }
             }
