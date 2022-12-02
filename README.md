@@ -10,8 +10,8 @@ This helps debug your tagging implementation.
 
 ```groovy
 dependencies {
-  debugImplementation 'com.adevinta.android:taggingviewer:+'
-  releaseImplementation 'com.adevinta.android:taggingviewer-no-op:+'
+  debugImplementation 'com.adevinta.android:tagging-viewer:+'
+  releaseImplementation 'com.adevinta.android:tagging-viewer-no-op:+'
 }
 ```
 (Check for latest version in GitHub releases)
