@@ -26,7 +26,7 @@ internal class TagEntryItemViewHolder(binding: TaggingViewItemBinding) : ViewHol
   companion object {
     fun build(parent: ViewGroup): TagEntryItemViewHolder {
       val inflater = LayoutInflater.from(parent.context)
-      val binding = TaggingViewItemBinding.inflate(inflater)
+      val binding = TaggingViewItemBinding.inflate(inflater, parent, false)
       return TagEntryItemViewHolder(binding)
     }
   }
