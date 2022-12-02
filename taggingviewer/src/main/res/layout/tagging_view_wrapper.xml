@@ -23,7 +23,6 @@
     <com.adevinta.android.taggingviewer.internal.view.TaggingOverlayListView
         android:id="@+id/tagging_viewer_tags_list"
         android:layout_width="match_parent"
-        android:layout_gravity="end"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
         android:paddingTop="8dp"
