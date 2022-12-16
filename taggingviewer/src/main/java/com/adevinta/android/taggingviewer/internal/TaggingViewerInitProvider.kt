@@ -24,7 +24,7 @@ class TaggingViewerInitProvider : ContentProvider() {
       throw NullPointerException("YourLibraryInitProvider ProviderInfo cannot be null.")
     }
     // So if the authorities equal the library internal ones, the developer forgot to set his applicationId
-    if (BuildConfig.LIBRARY_PACKAGE_NAME + ".yourlibraryinitprovider" == providerInfo.authority) {
+    if (BuildConfig.LIBRARY_PACKAGE_NAME + ".taggingviewerinitprovider" == providerInfo.authority) {
       throw IllegalStateException(
         "Incorrect provider authority in manifest. Most likely due to a " + "missing applicationId variable in application\'s build.gradle."
       )
