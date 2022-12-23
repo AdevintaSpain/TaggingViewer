@@ -1,5 +1,5 @@
 package com.adevinta.android.taggingviewer
 
-object DetailComposeFeatureFlag {
-  val isEnabled: Boolean = true
+internal object DetailComposeFeatureFlag {
+  internal const val isEnabled: Boolean = false
 }
