@@ -36,5 +36,6 @@ dependencies {
   implementation(libs.compose.material.material3)
   implementation(libs.compose.ui.ui)
   implementation(libs.compose.ui.tooling)
+  implementation(libs.compose.runtime.livedata)
 }
 
