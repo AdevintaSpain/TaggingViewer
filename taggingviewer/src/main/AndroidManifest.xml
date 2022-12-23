@@ -7,11 +7,13 @@
         android:name="com.adevinta.android.taggingviewer.DetailedTaggingActivity"
         android:theme="@style/Theme.MaterialComponents.Light"
         />
+    <activity android:name="com.adevinta.android.taggingviewer.DetailedTaggingComposeActivity" />
+
     <provider
-        android:authorities="${applicationId}.taggingviewerinitprovider"
-        android:exported="false"
-        android:enabled="true"
         android:name="com.adevinta.android.taggingviewer.internal.TaggingViewerInitProvider"
+        android:authorities="${applicationId}.taggingviewerinitprovider"
+        android:enabled="true"
+        android:exported="false"
         />
   </application>
 

@@ -155,7 +155,11 @@ object TaggingViewer {
 
   @JvmStatic
   fun showDetailedActivity(context: Context) {
-    context.startActivity(Intent(context, DetailedTaggingActivity::class.java))
+    if (DetailComposeFeatureFlag.isEnabled) {
+      context.startActivity(Intent(context, DetailedTaggingComposeActivity::class.java))
+    } else {
+      context.startActivity(Intent(context, DetailedTaggingActivity::class.java))
+    }
   }
 
   private fun isAlreadyInjected(activity: Activity): Boolean {
