@@ -27,5 +27,14 @@ dependencies {
   implementation(libs.androidx.recyclerView)
   implementation(libs.androidx.lifecycle)
   implementation(libs.androidx.material)
+  implementation(platform(libs.compose.bom))
+  implementation(libs.androidx.activity.compose)
+
+  implementation(platform(libs.compose.bom))
+  implementation(libs.compose.foundation.foundation)
+  implementation(libs.compose.foundation.layout)
+  implementation(libs.compose.material.material3)
+  implementation(libs.compose.ui.ui)
+  implementation(libs.compose.ui.tooling)
 }
 
