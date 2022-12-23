@@ -16,7 +16,7 @@ class MainSampleActivity : AppCompatActivity() {
 
     findViewById<SwitchCompat>(R.id.overlayEnabledSwitch).setOnCheckedChangeListener { _, isChecked ->
       if (isChecked) {
-        TaggingViewer.enableOverlay(this)
+        TaggingViewer.enableOverlay()
       } else {
         TaggingViewer.disableOverlay()
       }
