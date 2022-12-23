@@ -16,7 +16,7 @@ class MergeActivity : AppCompatActivity() {
       switch.isChecked = TaggingViewer.isOverlayEnabled()
       switch.setOnCheckedChangeListener { _, isChecked ->
         if (isChecked) {
-          TaggingViewer.enableOverlay(this)
+          TaggingViewer.enableOverlay()
         } else {
           TaggingViewer.disableOverlay()
         }

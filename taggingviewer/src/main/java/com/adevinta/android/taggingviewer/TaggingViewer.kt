@@ -13,15 +13,18 @@ import com.adevinta.android.taggingviewer.internal.TaggingConfig
 import com.adevinta.android.taggingviewer.internal.TaggingViewerUiComponent
 import com.adevinta.android.taggingviewer.internal.TrackingDispatcher
 import com.adevinta.android.taggingviewer.internal.util.ActivityLifecycleCallbacksAdapter
+import java.lang.ref.WeakReference
 
 object TaggingViewer {
 
   internal var isOverlayEnabled: Boolean = false
   internal var isActivitySeparatorEnabled: Boolean = true
   internal var isActivityNameSeparatorEnabled: Boolean = false
+  internal var currentActivity: WeakReference<Activity>? = null
 
   private val activityLifecycleCallbacks = object : ActivityLifecycleCallbacksAdapter() {
     override fun onActivityStarted(activity: Activity) {
+      currentActivity = WeakReference(activity)
       if (isOverlayEnabled) {
         injectTaggingIntoActivity(activity)
       }
@@ -65,7 +68,7 @@ object TaggingViewer {
     ReplaceWith("enableOverlay(context)")
   )
   fun enable(context: Context) {
-    enableOverlay(context)
+    enableOverlay()
   }
 
   @JvmStatic
@@ -78,10 +81,10 @@ object TaggingViewer {
   fun isOverlayEnabled(): Boolean = isOverlayEnabled
 
   @JvmStatic
-  fun enableOverlay(context: Context) {
+  fun enableOverlay() {
     isOverlayEnabled = true
-    if (context is Activity) {
-      injectTaggingIntoActivity(context)
+    currentActivity?.get()?.let {
+      injectTaggingIntoActivity(it)
     }
     TrackingDispatcher.refreshScreen()
   }
