@@ -8,7 +8,7 @@ android {
 
   defaultConfig {
     targetSdk = 33
-    minSdk = 23
+    minSdk = 21
     applicationId = "com.adevinta.android.taggingviewer.sample"
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
