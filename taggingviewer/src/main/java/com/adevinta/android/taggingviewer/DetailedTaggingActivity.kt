@@ -16,18 +16,18 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.adevinta.android.taggingviewer.databinding.TaggingActivityDetailedBinding
+import com.adevinta.android.taggingviewer.filter.TaggingViewerFilterListBottomSheet
 import com.adevinta.android.taggingviewer.internal.TagEntry
 import com.adevinta.android.taggingviewer.internal.TrackingDispatcher
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import kotlin.reflect.KClass
 
 class DetailedTaggingActivity : AppCompatActivity() {
 
   private val adapter: DetailTaggingAdapter = DetailTaggingAdapter()
 
-  private var itemTypes: List<KClass<out TagEntry>> = emptyList()
+  private var itemTypes: List<String> = emptyList()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -46,7 +46,7 @@ class DetailedTaggingActivity : AppCompatActivity() {
           .filterNot { it is TagEntry.SeparatorEntry }
         adapter.entries = filteredEntries
 
-        itemTypes = filteredEntries.map { it::class }.distinct()
+        itemTypes = filteredEntries.map { it.name }.distinct()
         (this as MenuHost).invalidateMenu()
       }
     )
@@ -71,12 +71,23 @@ class DetailedTaggingActivity : AppCompatActivity() {
             true
           }
           R.id.menu_filter -> {
+            showFilterList()
             true
           }
           else -> false
         }
       }
     }, this)
+  }
+
+  private fun showFilterList() {
+    TaggingViewerFilterListBottomSheet.show(
+      fm = supportFragmentManager,
+      itemTypes = itemTypes,
+      onTypeVisibilityChanged = { type, visible ->
+
+      },
+    )
   }
 }
 
