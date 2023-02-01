@@ -13,7 +13,6 @@ android {
   compileSdk = 33
 
   defaultConfig {
-    targetSdk = 33
     minSdk = 21
   }
   buildFeatures {
@@ -25,6 +24,8 @@ dependencies {
   implementation(libs.androidx.coreKtx)
   implementation(libs.androidx.appcompat)
   implementation(libs.androidx.recyclerView)
+  implementation(libs.androidx.activity)
+  implementation(libs.androidx.livedata)
   implementation(libs.androidx.lifecycle)
   implementation(libs.androidx.material)
 }
