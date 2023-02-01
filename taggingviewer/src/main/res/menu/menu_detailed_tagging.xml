@@ -5,6 +5,13 @@
       tools:ignore="HardcodedText"
     >
   <item
+      android:id="@+id/menu_filter"
+      android:icon="@drawable/tgv_ic_filter_list_24"
+      android:title="Filter"
+      app:iconTint="?android:textColorPrimary"
+      app:showAsAction="ifRoom"
+      />
+  <item
       android:id="@+id/menu_remove"
       android:icon="@drawable/tgv_ic_delete_white_24dp"
       android:title="Delete"

@@ -3,16 +3,20 @@ package com.adevinta.android.taggingviewer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.adevinta.android.taggingviewer.databinding.TaggingActivityDetailedBinding
+import com.adevinta.android.taggingviewer.filter.TaggingViewerFilterListBottomSheet
 import com.adevinta.android.taggingviewer.internal.TagEntry
 import com.adevinta.android.taggingviewer.internal.TrackingDispatcher
 import java.text.SimpleDateFormat
@@ -22,6 +26,8 @@ import java.util.Locale
 class DetailedTaggingActivity : AppCompatActivity() {
 
   private val adapter: DetailTaggingAdapter = DetailTaggingAdapter()
+
+  private var itemTypes: MutableMap<String, Boolean> = mutableMapOf()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -35,31 +41,73 @@ class DetailedTaggingActivity : AppCompatActivity() {
     TrackingDispatcher.entriesData().observe(
       this,
       Observer { entries ->
-        adapter.entries = entries
+        val filteredEntries = entries
           .sortedByDescending { it.timestamp }
           .filterNot { it is TagEntry.SeparatorEntry }
+          .filter { itemTypes[it.name] ?: true }
+
+        adapter.entries = filteredEntries
+
+        itemTypes = filteredEntries
+          .map { it.name }
+          .distinct()
+          .associateWith { true }
+          .toMutableMap()
+
+        (this as MenuHost).invalidateMenu()
       }
     )
+
+
+    addMenuProvider(object : MenuProvider {
+      override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.menu_detailed_tagging, menu)
+      }
+
+      override fun onPrepareMenu(menu: Menu) {
+        super.onPrepareMenu(menu)
+
+        menu.findItem(R.id.menu_filter).isVisible = itemTypes.isNotEmpty()
+      }
+
+      override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return when (menuItem.itemId) {
+          R.id.menu_remove -> {
+            TaggingViewer.clearAll()
+            adapter.entries = listOf()
+            true
+          }
+          R.id.menu_filter -> {
+            showFilterList()
+            true
+          }
+          else -> false
+        }
+      }
+    }, this)
   }
 
-  override fun onCreateOptionsMenu(menu: Menu): Boolean {
-    menuInflater.inflate(R.menu.menu_detailed_tagging, menu)
-    return true
-  }
-
-  override fun onOptionsItemSelected(item: MenuItem): Boolean {
-    return if (item.itemId == R.id.menu_remove) {
-      TaggingViewer.clearAll()
-      adapter.entries = listOf()
-      true
-    } else {
-      super.onOptionsItemSelected(item)
-    }
+  private fun showFilterList() {
+    TaggingViewerFilterListBottomSheet.show(
+      fm = supportFragmentManager,
+      itemTypes = itemTypes,
+      onTypeVisibilityChanged = { type, visible ->
+        itemTypes[type] = visible
+        adapter.filter = itemTypes
+      },
+    )
   }
 }
 
 internal class DetailTaggingAdapter : RecyclerView.Adapter<DetailTaggingViewHolder>() {
+  var filter: MutableMap<String, Boolean> = mutableMapOf()
+    set(value) {
+      field = value
+      notifyDataSetChanged()
+    }
+
   var entries: List<TagEntry> = mutableListOf()
+    get() = field.filter { filter[it.name] ?: true }
     set(value) {
       field = value
       notifyDataSetChanged()
