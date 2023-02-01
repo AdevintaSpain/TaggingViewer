@@ -14,8 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,8 +21,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.adevinta.android.taggingviewer.databinding.TaggingActivityDetailedBinding
 import com.adevinta.android.taggingviewer.filter.TaggingViewerFilterListBottomSheet
 import com.adevinta.android.taggingviewer.internal.TagEntry
-import com.adevinta.android.taggingviewer.internal.TrackingDispatcher
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -35,8 +31,6 @@ class DetailedTaggingActivity : AppCompatActivity() {
   private val viewModel: DetailTaggingViewModel by viewModels()
 
   private val adapter: DetailTaggingAdapter = DetailTaggingAdapter()
-
-  private var itemTypes: MutableMap<String, Boolean> = mutableMapOf()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -49,22 +43,18 @@ class DetailedTaggingActivity : AppCompatActivity() {
 
     lifecycleScope.launch {
       repeatOnLifecycle(Lifecycle.State.RESUMED) {
-       viewModel.flow.collect { entries ->
-         val filteredEntries = entries
-           .sortedByDescending { it.timestamp }
-           .filterNot { it is TagEntry.SeparatorEntry }
-           .filter { itemTypes[it.name] ?: true }
+        launch {
+          viewModel.flow.collect { entries ->
+            adapter.entries = entries
+            (this@DetailedTaggingActivity as MenuHost).invalidateMenu()
+          }
+        }
 
-         adapter.entries = filteredEntries
-
-         itemTypes = filteredEntries
-           .map { it.name }
-           .distinct()
-           .associateWith { true }
-           .toMutableMap()
-
-         (this@DetailedTaggingActivity as MenuHost).invalidateMenu()
-       }
+        launch {
+          viewModel.filterShown.collect { filters ->
+            filters?.let { showFilterList(it) }
+          }
+        }
       }
     }
 
@@ -76,7 +66,7 @@ class DetailedTaggingActivity : AppCompatActivity() {
       override fun onPrepareMenu(menu: Menu) {
         super.onPrepareMenu(menu)
 
-        menu.findItem(R.id.menu_filter).isVisible = itemTypes.isNotEmpty()
+        menu.findItem(R.id.menu_filter).isEnabled = adapter.entries.isNotEmpty()
       }
 
       override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -87,7 +77,7 @@ class DetailedTaggingActivity : AppCompatActivity() {
             true
           }
           R.id.menu_filter -> {
-            showFilterList()
+            viewModel.onShowFilters()
             true
           }
           else -> false
@@ -99,27 +89,20 @@ class DetailedTaggingActivity : AppCompatActivity() {
     viewModel.onInit(this)
   }
 
-  private fun showFilterList() {
+  private fun showFilterList(filters: Map<String, Boolean>) {
+    viewModel.onFiltersShown()
     TaggingViewerFilterListBottomSheet.show(
       fm = supportFragmentManager,
-      itemTypes = itemTypes,
+      itemTypes = filters,
       onTypeVisibilityChanged = { type, visible ->
-        itemTypes[type] = visible
-        adapter.filter = itemTypes
+        viewModel.onFilterUpdated(type, visible)
       },
     )
   }
 }
 
 internal class DetailTaggingAdapter : RecyclerView.Adapter<DetailTaggingViewHolder>() {
-  var filter: MutableMap<String, Boolean> = mutableMapOf()
-    set(value) {
-      field = value
-      notifyDataSetChanged()
-    }
-
   var entries: List<TagEntry> = mutableListOf()
-    get() = field.filter { filter[it.name] ?: true }
     set(value) {
       field = value
       notifyDataSetChanged()
