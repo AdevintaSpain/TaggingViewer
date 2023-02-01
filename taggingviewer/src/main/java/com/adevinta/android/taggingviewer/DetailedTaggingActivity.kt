@@ -82,7 +82,7 @@ class DetailedTaggingActivity : AppCompatActivity() {
       override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         return when (menuItem.itemId) {
           R.id.menu_remove -> {
-            TaggingViewer.clearAll()
+            viewModel.clearAll()
             adapter.entries = listOf()
             true
           }

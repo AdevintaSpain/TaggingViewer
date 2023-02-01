@@ -20,4 +20,8 @@ class DetailTaggingViewModel : ViewModel() {
       _flow.value = entries
     }
   }
+
+  fun clearAll() = viewModelScope.launch {
+    TaggingViewer.clearAll()
+  }
 }
