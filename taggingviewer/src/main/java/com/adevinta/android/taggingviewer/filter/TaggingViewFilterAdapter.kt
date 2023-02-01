@@ -4,14 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.adevinta.android.taggingviewer.databinding.TaggingViewFilterRowBinding
-import com.adevinta.android.taggingviewer.internal.TagEntry
-import kotlin.reflect.KClass
 
 internal class TaggingViewFilterAdapter(
   private val onTypeVisibilityChanged: (String, Boolean) -> Unit,
 ) : RecyclerView.Adapter<TaggingViewFilterAdapter.ViewHolder>() {
 
-  var items: List<String> = emptyList()
+  var items: Map<String, Boolean> = emptyMap()
     set(value) {
       field = value
       notifyDataSetChanged()
@@ -24,8 +22,8 @@ internal class TaggingViewFilterAdapter(
   }
 
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    val item = items[position]
-    holder.bind(item)
+    val key = items.keys.toList()[position]
+    holder.bind(key, items[key] ?: true)
   }
 
   override fun getItemCount(): Int = items.size
@@ -35,9 +33,9 @@ internal class TaggingViewFilterAdapter(
     private val onTypeVisibilityChanged: (String, Boolean) -> Unit,
   ) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: String) {
+    fun bind(item: String, checked: Boolean) {
       TaggingViewFilterRowBinding.bind(itemView).apply {
-        text.isChecked = true
+        text.isChecked = checked
         text.text = item
         text.setOnCheckedChangeListener { _, isChecked ->
           onTypeVisibilityChanged(item, isChecked)

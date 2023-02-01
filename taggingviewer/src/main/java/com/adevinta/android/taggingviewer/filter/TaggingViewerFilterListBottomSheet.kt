@@ -10,7 +10,7 @@ import com.adevinta.android.taggingviewer.databinding.TaggingViewFilterListBindi
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class TaggingViewerFilterListBottomSheet(
-  private val itemTypes: List<String>,
+  private val itemTypes: Map<String, Boolean>,
   private val onTypeVisibilityChanged: (String, Boolean) -> Unit,
 ) : BottomSheetDialogFragment() {
 
@@ -19,7 +19,7 @@ class TaggingViewerFilterListBottomSheet(
     onTypeVisibilityChanged = onTypeVisibilityChanged
   )
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
     super.onCreateView(inflater, container, savedInstanceState)
     val binding = TaggingViewFilterListBinding.inflate(inflater, container, false)
     return binding.root
@@ -36,14 +36,14 @@ class TaggingViewerFilterListBottomSheet(
     showTypes(itemTypes)
   }
 
-  private fun showTypes(itemTypes: List<String>) {
+  private fun showTypes(itemTypes: Map<String, Boolean>) {
     adapter.items = itemTypes
   }
 
   companion object {
     fun show(
       fm: FragmentManager,
-      itemTypes: List<String>,
+      itemTypes: Map<String, Boolean>,
       onTypeVisibilityChanged: (String, Boolean) -> Unit,
     ): TaggingViewerFilterListBottomSheet {
       val sheet = TaggingViewerFilterListBottomSheet(

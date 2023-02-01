@@ -90,7 +90,7 @@ class DetailedTaggingActivity : AppCompatActivity() {
   private fun showFilterList() {
     TaggingViewerFilterListBottomSheet.show(
       fm = supportFragmentManager,
-      itemTypes = itemTypes.keys.toList(),
+      itemTypes = itemTypes,
       onTypeVisibilityChanged = { type, visible ->
         itemTypes[type] = visible
         adapter.filter = itemTypes
@@ -103,13 +103,13 @@ internal class DetailTaggingAdapter : RecyclerView.Adapter<DetailTaggingViewHold
   var filter: MutableMap<String, Boolean> = mutableMapOf()
     set(value) {
       field = value
-      entries = entries.filter { field[it.name] ?: true }
       notifyDataSetChanged()
     }
 
   var entries: List<TagEntry> = mutableListOf()
+    get() = field.filter { filter[it.name] ?: true }
     set(value) {
-      field = value.filter { filter[it.name] ?: true }
+      field = value
       notifyDataSetChanged()
     }
 
