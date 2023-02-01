@@ -9,21 +9,30 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.adevinta.android.taggingviewer.databinding.TaggingActivityDetailedBinding
 import com.adevinta.android.taggingviewer.filter.TaggingViewerFilterListBottomSheet
 import com.adevinta.android.taggingviewer.internal.TagEntry
 import com.adevinta.android.taggingviewer.internal.TrackingDispatcher
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
 class DetailedTaggingActivity : AppCompatActivity() {
+
+  private val viewModel: DetailTaggingViewModel by viewModels()
 
   private val adapter: DetailTaggingAdapter = DetailTaggingAdapter()
 
@@ -38,26 +47,26 @@ class DetailedTaggingActivity : AppCompatActivity() {
     binding.detailedTaggingListView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     binding.detailedTaggingListView.adapter = adapter
 
-    TrackingDispatcher.entriesData().observe(
-      this,
-      Observer { entries ->
-        val filteredEntries = entries
-          .sortedByDescending { it.timestamp }
-          .filterNot { it is TagEntry.SeparatorEntry }
-          .filter { itemTypes[it.name] ?: true }
+    lifecycleScope.launch {
+      repeatOnLifecycle(Lifecycle.State.RESUMED) {
+       viewModel.flow.collect { entries ->
+         val filteredEntries = entries
+           .sortedByDescending { it.timestamp }
+           .filterNot { it is TagEntry.SeparatorEntry }
+           .filter { itemTypes[it.name] ?: true }
 
-        adapter.entries = filteredEntries
+         adapter.entries = filteredEntries
 
-        itemTypes = filteredEntries
-          .map { it.name }
-          .distinct()
-          .associateWith { true }
-          .toMutableMap()
+         itemTypes = filteredEntries
+           .map { it.name }
+           .distinct()
+           .associateWith { true }
+           .toMutableMap()
 
-        (this as MenuHost).invalidateMenu()
+         (this@DetailedTaggingActivity as MenuHost).invalidateMenu()
+       }
       }
-    )
-
+    }
 
     addMenuProvider(object : MenuProvider {
       override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -85,6 +94,9 @@ class DetailedTaggingActivity : AppCompatActivity() {
         }
       }
     }, this)
+
+
+    viewModel.onInit(this)
   }
 
   private fun showFilterList() {

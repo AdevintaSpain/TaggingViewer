@@ -8,6 +8,8 @@ androidx-corektx = "1.9.0"
 androidx-appcompat = "1.5.0"
 androidx-recycler = "1.2.1"
 androidx-livedata = "2.5.1"
+androidx-lifecycle = "2.5.1"
+androidx-activity = "1.6.1"
 material = "1.7.0"
 
 [libraries]
@@ -20,5 +22,7 @@ nexus-staging = { module = "io.codearte.gradle.nexus:gradle-nexus-staging-plugin
 androidx-coreKtx = { module = "androidx.core:core-ktx", version.ref = "androidx-corektx" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
 androidx-recyclerView = { module = "androidx.recyclerview:recyclerview", version.ref = "androidx-recycler" }
-androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-livedata", version.ref = "androidx-livedata" }
+androidx-activity = { module = "androidx.activity:activity-ktx", version.ref = "androidx-activity" }
+androidx-livedata = { module = "androidx.lifecycle:lifecycle-livedata", version.ref = "androidx-livedata" }
+androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
 androidx-material = { module = "com.google.android.material:material", version.ref = "material" }
