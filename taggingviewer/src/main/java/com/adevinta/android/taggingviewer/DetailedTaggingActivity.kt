@@ -27,7 +27,7 @@ class DetailedTaggingActivity : AppCompatActivity() {
 
   private val adapter: DetailTaggingAdapter = DetailTaggingAdapter()
 
-  private var itemTypes: List<String> = emptyList()
+  private var itemTypes: MutableMap<String, Boolean> = mutableMapOf()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -44,9 +44,16 @@ class DetailedTaggingActivity : AppCompatActivity() {
         val filteredEntries = entries
           .sortedByDescending { it.timestamp }
           .filterNot { it is TagEntry.SeparatorEntry }
+          .filter { itemTypes[it.name] ?: true }
+
         adapter.entries = filteredEntries
 
-        itemTypes = filteredEntries.map { it.name }.distinct()
+        itemTypes = filteredEntries
+          .map { it.name }
+          .distinct()
+          .associateWith { true }
+          .toMutableMap()
+
         (this as MenuHost).invalidateMenu()
       }
     )
@@ -83,18 +90,26 @@ class DetailedTaggingActivity : AppCompatActivity() {
   private fun showFilterList() {
     TaggingViewerFilterListBottomSheet.show(
       fm = supportFragmentManager,
-      itemTypes = itemTypes,
+      itemTypes = itemTypes.keys.toList(),
       onTypeVisibilityChanged = { type, visible ->
-
+        itemTypes[type] = visible
+        adapter.filter = itemTypes
       },
     )
   }
 }
 
 internal class DetailTaggingAdapter : RecyclerView.Adapter<DetailTaggingViewHolder>() {
-  var entries: List<TagEntry> = mutableListOf()
+  var filter: MutableMap<String, Boolean> = mutableMapOf()
     set(value) {
       field = value
+      entries = entries.filter { field[it.name] ?: true }
+      notifyDataSetChanged()
+    }
+
+  var entries: List<TagEntry> = mutableListOf()
+    set(value) {
+      field = value.filter { filter[it.name] ?: true }
       notifyDataSetChanged()
     }
 
