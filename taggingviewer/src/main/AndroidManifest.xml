@@ -5,7 +5,7 @@
   <application>
     <activity
         android:name="com.adevinta.android.taggingviewer.DetailedTaggingActivity"
-        android:theme="@style/Theme.MaterialComponents.Light"
+        android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
         />
     <provider
         android:authorities="${applicationId}.taggingviewerinitprovider"
