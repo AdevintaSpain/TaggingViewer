@@ -1,5 +1,5 @@
 [versions]
-gradlePlugin = "7.4.0"
+gradlePlugin = "7.4.2"
 kotlin = "1.7.0"
 nexusPublish = "1.1.0"
 nexusStaging = "0.22.0"
