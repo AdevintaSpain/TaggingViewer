@@ -57,6 +57,10 @@ internal class DetailTaggingViewHolder(binding: TaggingDetailedItemBinding) : Re
     }
 
     binding.detailItemTime.text = timeFormat.format(Date(tagEntry.timestamp))
+    val version = tagEntry.version?.toString() ?: "-"
+    binding.detailItemVersion.text = binding.detailItemVersion.context.getString(
+      R.string.tagging_viewer_item_version, version
+    )
 
     binding.detailItemIcon.setImageResource(
       when (tagEntry) {
