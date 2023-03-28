@@ -1,6 +1,6 @@
 [versions]
 gradlePlugin = "7.4.2"
-kotlin = "1.7.0"
+kotlin = "1.8.10"
 nexusPublish = "1.1.0"
 nexusStaging = "0.22.0"
 
@@ -10,7 +10,7 @@ androidx-recycler = "1.2.1"
 androidx-livedata = "2.5.1"
 androidx-lifecycle = "2.5.1"
 androidx-activity = "1.6.1"
-material = "1.7.0"
+material = "1.8.0"
 
 [libraries]
 
