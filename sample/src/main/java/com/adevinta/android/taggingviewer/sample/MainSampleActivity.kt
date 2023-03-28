@@ -54,7 +54,7 @@ class MainSampleActivity : AppCompatActivity() {
       startActivity(Intent(this, MergeActivity::class.java))
     }
     findViewById<View>(R.id.show_the_list_button).setOnClickListener {
-      TaggingViewer.tagClick("Open list button")
+      TaggingViewer.tagClick("Open list button", version = 3)
       startActivity(Intent(this, ListActivity::class.java))
     }
 
@@ -62,45 +62,46 @@ class MainSampleActivity : AppCompatActivity() {
       addRandomEvents()
     }
     findViewById<View>(R.id.addScreenButton).setOnClickListener {
-      TaggingViewer.tagScreen("Some screen", mapOf("property name" to "property value"))
+      TaggingViewer.tagScreen("Some screen", mapOf("property name" to "property value"), version = 1)
     }
     findViewById<View>(R.id.addClickButton).setOnClickListener {
-      TaggingViewer.tagClick("Some Click", mapOf("property name" to "property value"))
+      TaggingViewer.tagClick("Some Click", mapOf("property name" to "property value"), version = 3)
     }
     findViewById<View>(R.id.addEventButton).setOnClickListener {
-      TaggingViewer.tagEvent("Some Event", mapOf("property name" to "property value"))
+      TaggingViewer.tagEvent("Some Event", mapOf("property name" to "property value"), version = 3)
     }
     findViewById<View>(R.id.addIdentifyButton).setOnClickListener {
       TaggingViewer.tagUserAttribute("Some Identify", mapOf("property name" to "property value"))
     }
 
     findViewById<View>(R.id.show_detailed_view).setOnClickListener {
-      TaggingViewer.tagClick("Detailed Activity Clicked")
+      TaggingViewer.tagClick("Detailed Activity Clicked", version = 3)
       TaggingViewer.showDetailedActivity(this)
     }
   }
 
   override fun onStart() {
     super.onStart()
-    TaggingViewer.tagScreen("Home screen")
+    TaggingViewer.tagScreen("Home screen", version = 1)
     findViewById<SwitchCompat>(R.id.overlayEnabledSwitch).isChecked = TaggingViewer.isOverlayEnabled()
   }
 
   private fun addRandomEvents() {
     TaggingViewer.tagUserAttribute("identify", details = mapOf("name" to "Rodrigo", "email" to "rodri@vaticancity.it"))
-    TaggingViewer.tagClick("Something clicked")
-    TaggingViewer.tagClick(LIPSUM)
-    TaggingViewer.tagEvent("This happened", details = mapOf("key" to "value", "another_key" to "more value"))
-    TaggingViewer.tagScreen("Screen viewed")
-    TaggingViewer.tagClick("Another click")
+    TaggingViewer.tagClick("Something clicked", version = 4)
+    TaggingViewer.tagClick(LIPSUM, version = 3)
+    TaggingViewer.tagEvent("This happened", details = mapOf("key" to "value", "another_key" to "more value"), version = 2)
+    TaggingViewer.tagScreen("Screen viewed", version = 2)
+    TaggingViewer.tagClick("Another click", version = 3)
     TaggingViewer.tagEvent(
-      "One more event",
-      details = mapOf("more_key" to "just a value", "keys_everywhere" to "value values values", "guess_what" to "value!")
+      name = "One more event",
+      details = mapOf("more_key" to "just a value", "keys_everywhere" to "value values values", "guess_what" to "value!"),
+      version = 20,
     )
-    TaggingViewer.tagClick("Something clicked")
-    TaggingViewer.tagClick("Another click")
-    TaggingViewer.tagEvent("This happened")
-    TaggingViewer.tagEvent("One more event")
+    TaggingViewer.tagClick("Something clicked", version = 1)
+    TaggingViewer.tagClick("Another click", version = 2)
+    TaggingViewer.tagEvent("This happened", version = 3)
+    TaggingViewer.tagEvent("One more event", version = 3)
   }
 
   companion object {
