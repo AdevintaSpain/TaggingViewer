@@ -7,10 +7,6 @@ import androidx.lifecycle.Observer
 internal fun <T> LiveData<T>.observe(owner: LifecycleOwner, f: (T) -> Unit) {
   this.observe(
     owner,
-    object : Observer<T> {
-      override fun onChanged(t: T?) {
-        t?.let(f)
-      }
-    }
+    Observer { t -> t?.let(f) }
   )
 }

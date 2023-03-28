@@ -34,17 +34,17 @@ object TaggingViewer {
 
   @JvmStatic
   @JvmOverloads
-  fun tagClick(name: String, details: Map<String, String> = emptyMap()) {
+  fun tagClick(name: String, details: Map<String, String> = emptyMap(), version: Int? = null) {
   }
 
   @JvmStatic
   @JvmOverloads
-  fun tagScreen(name: String, details: Map<String, String> = emptyMap()) {
+  fun tagScreen(name: String, details: Map<String, String> = emptyMap(), version: Int? = null) {
   }
 
   @JvmStatic
   @JvmOverloads
-  fun tagEvent(name: String, details: Map<String, String> = emptyMap()) {
+  fun tagEvent(name: String, details: Map<String, String> = emptyMap(), version: Int? = null) {
   }
 
   @JvmStatic
