@@ -50,7 +50,7 @@ class MainSampleActivity : AppCompatActivity() {
     )
 
     findViewById<View>(R.id.show_the_merge_button).setOnClickListener {
-      TaggingViewer.tagClick("Open merge button")
+      TaggingViewer.tagClick(name = "Open merge button", version = 3)
       startActivity(Intent(this, MergeActivity::class.java))
     }
     findViewById<View>(R.id.show_the_list_button).setOnClickListener {
