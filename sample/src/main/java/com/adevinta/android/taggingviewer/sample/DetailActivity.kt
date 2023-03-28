@@ -22,7 +22,11 @@ class DetailActivity : AppCompatActivity() {
 
   override fun onStart() {
     super.onStart()
-    tagScreen("Detail screen", mapOf("itemName" to extraItemName, "text" to extraText))
+    tagScreen(
+      name = "Detail screen",
+      details = mapOf("itemName" to extraItemName, "text" to extraText),
+      version = 2,
+    )
   }
 
   companion object {

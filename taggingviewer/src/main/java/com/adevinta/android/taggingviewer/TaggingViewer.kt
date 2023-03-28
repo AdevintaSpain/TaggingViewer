@@ -119,8 +119,18 @@ object TaggingViewer {
 
   @JvmStatic
   @JvmOverloads
-  fun tagClick(name: String, details: Map<String, String> = emptyMap()) {
-    TrackingDispatcher.addEntry(TagEntry.ItemEntry.Click(name, details = details))
+  fun tagClick(
+    name: String,
+    details: Map<String, String> = emptyMap(),
+    version: Int? = null,
+  ) {
+    TrackingDispatcher.addEntry(
+      TagEntry.ItemEntry.Click(
+        name = name,
+        details = details,
+        version = version
+      )
+    )
     if (isOverlayEnabled) {
       TrackingDispatcher.refreshScreen()
     }
@@ -128,8 +138,18 @@ object TaggingViewer {
 
   @JvmStatic
   @JvmOverloads
-  fun tagScreen(name: String, details: Map<String, String> = emptyMap()) {
-    TrackingDispatcher.addEntry(TagEntry.ItemEntry.Screen(name, details = details))
+  fun tagScreen(
+    name: String,
+    details: Map<String, String> = emptyMap(),
+    version: Int? = null,
+  ) {
+    TrackingDispatcher.addEntry(
+      TagEntry.ItemEntry.Screen(
+        name = name,
+        details = details,
+        version = version
+      )
+    )
     if (isOverlayEnabled) {
       TrackingDispatcher.refreshScreen()
     }
@@ -137,8 +157,18 @@ object TaggingViewer {
 
   @JvmStatic
   @JvmOverloads
-  fun tagEvent(name: String, details: Map<String, String> = emptyMap()) {
-    TrackingDispatcher.addEntry(TagEntry.ItemEntry.Event(name, details = details))
+  fun tagEvent(
+    name: String,
+    details: Map<String, String> = emptyMap(),
+    version: Int? = null,
+  ) {
+    TrackingDispatcher.addEntry(
+      TagEntry.ItemEntry.Event(
+        name = name,
+        details = details,
+        version = version
+      )
+    )
     if (isOverlayEnabled) {
       TrackingDispatcher.refreshScreen()
     }
@@ -146,8 +176,18 @@ object TaggingViewer {
 
   @JvmStatic
   @JvmOverloads
-  fun tagUserAttribute(name: String, details: Map<String, String> = emptyMap()) {
-    TrackingDispatcher.addEntry(TagEntry.ItemEntry.UserAttribute(name, details = details))
+  fun tagUserAttribute(
+    name: String,
+    details: Map<String, String> = emptyMap(),
+    version: Int? = null,
+  ) {
+    TrackingDispatcher.addEntry(
+      TagEntry.ItemEntry.UserAttribute(
+        name = name,
+        details = details,
+        version = version
+      )
+    )
     if (isOverlayEnabled) {
       TrackingDispatcher.refreshScreen()
     }
