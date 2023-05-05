@@ -9,7 +9,7 @@ androidx-appcompat = "1.5.0"
 androidx-recycler = "1.2.1"
 androidx-livedata-lifecycle = "2.6.1"
 androidx-activity = "1.6.1"
-material = "1.8.0"
+material = "1.9.0"
 
 [libraries]
 
