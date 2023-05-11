@@ -4,7 +4,7 @@ kotlin = "1.8.10"
 nexusPublish = "1.1.0"
 nexusStaging = "0.22.0"
 
-androidx-corektx = "1.9.0"
+androidx-corektx = "1.10.1"
 androidx-appcompat = "1.5.0"
 androidx-recycler = "1.2.1"
 androidx-livedata-lifecycle = "2.6.1"
